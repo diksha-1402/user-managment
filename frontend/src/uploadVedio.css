@@ -1,0 +1,90 @@
+/* Container */
+.upload-video-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styling */
+  .upload-video-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  input,
+  textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #007bff;
+  }
+  
+  /* Video Preview */
+  .video-preview {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .video-preview p {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background: #0056b3;
+  }
+  
+  .submit-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  /* Loader Message */
+  .loading-message {
+    text-align: center;
+    color: #007bff;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
