@@ -23,7 +23,8 @@ const messages = Object.freeze({
   CONST_PROFILE_UPDATED:"Profile updated successfully",
   CONST_WRONG:"Something went wrong",
   CONST_VEDIO_UPLOADED:"Vedio uploaded successfully",
-  CONST_USER_LISTING:"User listing"
+  CONST_USER_LISTING:"User listing",
+  CONST_IMAGE_UPLOADED_SUCCESSFULLY:"Image uploaded successfully"
 });
 
 export default messages;

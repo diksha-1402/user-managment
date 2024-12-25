@@ -9,6 +9,10 @@ const UploadVideo = () => {
     title: "",
     description: "",
   });
+  const [errors, setErrors] = useState({
+    title: "",
+    description: "",
+  });
   const [loading, setLoading] = useState(false); // Loader state
   const [preview, setPreview] = useState(null); // Video preview
   const navigate = useNavigate();
@@ -19,12 +23,37 @@ const UploadVideo = () => {
       alert("Only MP4 files are supported");
       return;
     }
+    if (file && file.size > 6 * 1024 * 1024) {
+      alert("File size must be less than 6MB");
+      return;
+    }
     setFormData((prev) => ({ ...prev, vedio: file }));
     setPreview(URL.createObjectURL(file)); // Create a preview URL
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "title") {
+      const wordCount = value.trim().split(/\s+/).length;
+      if (wordCount > 30) {
+        setErrors((prev) => ({ ...prev, title: "Title cannot exceed 30 words." }));
+        return;
+      } else {
+        setErrors((prev) => ({ ...prev, title: "" }));
+      }
+    }
+
+    if (name === "description") {
+      const wordCount = value.trim().split(/\s+/).length;
+      if (wordCount > 120) {
+        setErrors((prev) => ({ ...prev, description: "Description cannot exceed 120 words." }));
+        return;
+      } else {
+        setErrors((prev) => ({ ...prev, description: "" }));
+      }
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -52,8 +81,8 @@ const UploadVideo = () => {
     try {
       await axios.post("http://localhost:8000/v1/user/upload", data, {
         headers: {
-          "x-authorization": `Bearer ${token}`, // Correct header key
-          "Content-Type": "multipart/form-data", // Ensure proper content type
+          "x-authorization": `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       });
       alert("Video uploaded successfully!");
@@ -82,7 +111,9 @@ const UploadVideo = () => {
             onChange={handleInputChange}
             placeholder="Enter video title"
             required
+            className={`text ${errors.title ? "error" : ""}`}
           />
+          {errors.title && <p className="error-message">{errors.title}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="description">Description:</label>
@@ -94,7 +125,9 @@ const UploadVideo = () => {
             placeholder="Enter video description"
             rows="4"
             required
+            className={`textarea-field ${errors.description ? "error" : ""}`}
           />
+          {errors.description && <p className="error-message">{errors.description}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="vedio">Select MP4 Video:</label>

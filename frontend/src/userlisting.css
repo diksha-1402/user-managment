@@ -79,3 +79,17 @@
     color: #555;
   }
   
+  .user-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .profile-image {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Ensure width and height are equal */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits within the circle */
+    border: 2px solid #ccc; /* Optional: Add a border around the image */
+  }
+  

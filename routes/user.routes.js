@@ -11,6 +11,13 @@ userRouter.get(
   userController.getProfile
 );
 
+userRouter.patch(
+  "/upload-profile",
+  contentUpload.single("image"),
+  authMiddleware.checkAuthToken,
+  userController.uploadProfile
+);
+
 userRouter.get(
   "/listing",
   authMiddleware.checkAuthToken,

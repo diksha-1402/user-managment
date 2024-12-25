@@ -57,17 +57,34 @@ const Profile = () => {
         {users.map((user) => (
           <div key={user.id} className="user-card">
             <div className="user-details">
-              <h3>{user.firstName} {user.lastName}</h3>
-              <p><strong>Email:</strong> {user.email}</p>
-              <p><strong>Phone:</strong> {user.phoneNumber}</p>
-              <p><strong>About:</strong> {user.about}</p>
+              <div className="user-image-container">
+                <img
+                  src={user.image || "/default-profile.png"}
+                  alt={`${user.firstName} ${user.lastName}`}
+                  className="profile-image"
+                />
+              </div>
+              <h3>
+                {user.firstName} {user.lastName}
+              </h3>
+              <p>
+                <strong>Email:</strong> {user.email}
+              </p>
+              <p>
+                <strong>Phone:</strong> {user.phoneNumber}
+              </p>
+              <p>
+                <strong>About:</strong> {user.about}
+              </p>
             </div>
             <div className="video-section">
               <h4>Recent Videos</h4>
               <div className="video-gallery">
                 {user.userVedioData.slice(0, 5).map((video, index) => (
                   <div key={index} className="video-item">
-                    <p><strong>{video.title}</strong></p>
+                    <p>
+                      <strong>{video.title}</strong>
+                    </p>
                     <video width="320" height="240" controls>
                       <source src={video.vedioUrl} type="video/mp4" />
                       Your browser does not support the video tag.

@@ -56,6 +56,7 @@ let signup = async (req, res) => {
         role: constants.CONST_ROLE_USER,
         password: hashedPassword,
         phoneNumber: body?.phoneNumber,
+        image: "https://epasu.s3.us-east-1.amazonaws.com/1735122221215.avif",
       });
       let newData = await newUser.save();
       await emailSender.sendRegistrationOtp(newData, password);

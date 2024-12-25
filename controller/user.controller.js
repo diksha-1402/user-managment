@@ -29,6 +29,7 @@ let getProfile = async (req, res) => {
           email: 1,
           about: 1,
           status: 1,
+          image:1,
           createdAt: 1,
           role: 1,
           phoneNumber: 1,
@@ -165,6 +166,7 @@ let userListing = async (req, res) => {
           status: 1,
           createdAt: 1,
           role: 1,
+          image:1,
           phoneNumber: 1,
           userVedioData: 1,
         },
@@ -276,12 +278,49 @@ let userVedio = async (req, res) => {
   }
 };
 
+let uploadProfile = async (req, res) => {
+  try {
+    console.log(req.file, req.file?.location, "---------req.file?.location");
+    const image =
+      req.file?.location !== undefined ? `${req.file.location}` : "";
+    let userData = await userModel.findOneAndUpdate({
+     
+      _id: req.body.user_info._id,
+    },{
+      image: image,
+    });
+    if (!userData) {
+      return helper.returnFalseResponse(
+        req,
+        res,
+        constants.CONST_RESP_CODE_OK,
+        messages.CONST_WRONG
+      );
+    }
+    return helper.returnTrueResponse(
+      req,
+      res,
+      constants.CONST_RESP_CODE_OK,
+      messages.CONST_IMAGE_UPLOADED_SUCCESSFULLY,
+      image
+    );
+  } catch (error) {
+    return helper.returnFalseResponse(
+      req,
+      res,
+      constants.CONST_RESP_CODE_INTERNAL_SERVER_ERROR,
+      error.message
+    );
+  }
+};
+
 let userController = {
   getProfile: getProfile,
   updateProfile: updateProfile,
   uploadVedio: uploadVedio,
   userListing: userListing,
   userVedio: userVedio,
+  uploadProfile:uploadProfile
 };
 
 export default userController;

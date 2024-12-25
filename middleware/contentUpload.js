@@ -29,7 +29,6 @@ const s3Storage = multerS3({
     } else {
       fileName = `${currentDate}${path.extname(file.originalname)}`;
     }
-    console.log(fileName);
     cb(null, fileName);
   },
 });
@@ -42,10 +41,9 @@ const contentUpload = multer({
   storage: s3Storage,
   fileFilter: (req, file, callback) => {
     let result = sanitizeFile(file, callback);
-    console.log(result, "-------------res");
   },
   limits: {
-    fileSize: 1024 * 1024 * 20000,
+    fileSize: 1024 * 1024 * 100,
   },
 });
 

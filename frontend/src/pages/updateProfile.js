@@ -41,7 +41,15 @@ const UpdateProfile = () => {
   }, [navigate]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "about") {
+      const wordCount = value.trim().split(/\s+/).length;
+      if (wordCount > 300) {
+        setError("About section cannot exceed 300 words.");
+        return;
+      }
+    }
+    setFormData({ ...formData, [name]: value });
     setError("");
     setSuccess(false);
   };
@@ -59,7 +67,6 @@ const UpdateProfile = () => {
     const updatedData = {
       firstName: formData.firstName,
       lastName: formData.lastName,
-     
       about: formData.about,
       phoneNumber: formData.phoneNumber,
     };
@@ -108,7 +115,7 @@ const UpdateProfile = () => {
           placeholder="Last Name"
           className={`input-field ${error && !formData.lastName ? "error" : ""}`}
         />
-         <input
+        <input
           name="email"
           value={formData.email}
           readOnly
@@ -126,8 +133,8 @@ const UpdateProfile = () => {
           name="about"
           value={formData.about}
           onChange={handleChange}
-          placeholder="About"
-          className={`textarea-field ${error && !formData.about ? "error" : ""}`}
+          placeholder="About (Maximum 500 words)"
+          className={`textarea-field ${error && formData.about.trim().split(/\s+/).length > 300 ? "error" : ""}`}
         />
         <button type="submit" className="submit-btn" disabled={loading}>
           {loading ? "Updating..." : "Update"}
