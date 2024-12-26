@@ -18,7 +18,7 @@ const Profile = () => {
       }
       try {
         const response = await axios.get(
-          "http://localhost:8000/v1/user/listing",
+          "https://user-managment-3.onrender.com/v1/user/listing",
           {
             headers: { "x-authorization": `Bearer ${token}` },
           }

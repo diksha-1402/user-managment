@@ -45,7 +45,7 @@ const ChangePassword = () => {
     setLoading(true); // Start loading
     try {
       const response = await axios.patch(
-        "http://localhost:8000/v1/user/auth/change-password",
+        "https://user-managment-3.onrender.com/v1/user/auth/change-password",
         formData, // Only send required fields
         {
           headers: { "x-authorization": `Bearer ${token}` },

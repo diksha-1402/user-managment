@@ -19,7 +19,7 @@ const ViewAllVideos = () => {
       }
       try {
         const response = await axios.get(
-          `http://localhost:8000/v1/user/vedio/${userId}`, // API endpoint with userId
+          `https://user-managment-3.onrender.com/v1/user/vedio/${userId}`, // API endpoint with userId
           {
             headers: { "x-authorization": `Bearer ${token}` },
           }

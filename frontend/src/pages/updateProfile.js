@@ -25,7 +25,7 @@ const UpdateProfile = () => {
         return;
       }
       try {
-        const response = await axios.get("http://localhost:8000/v1/user/profile", {
+        const response = await axios.get("https://user-managment-3.onrender.com/v1/user/profile", {
           headers: { "x-authorization": `Bearer ${token}` },
         });
         if (response.data.success === 0) {
@@ -74,7 +74,7 @@ const UpdateProfile = () => {
     setLoading(true);
     try {
       const response = await axios.patch(
-        "http://localhost:8000/v1/user/update-profile",
+        "https://user-managment-3.onrender.com/v1/user/update-profile",
         updatedData,
         {
           headers: { "x-authorization": `Bearer ${token}` },

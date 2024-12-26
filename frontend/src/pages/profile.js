@@ -22,7 +22,7 @@ const Profile = () => {
 
       try {
         const response = await axios.get(
-          "http://localhost:8000/v1/user/profile",
+          "https://user-managment-3.onrender.com/v1/user/profile",
           {
             headers: { "x-authorization": `Bearer ${token}` },
           }
@@ -90,7 +90,7 @@ const Profile = () => {
 
     try {
       const response = await axios.patch(
-        "http://localhost:8000/v1/user/upload-profile",
+        "https://user-managment-3.onrender.com/v1/user/upload-profile",
         formData,
         {
           headers: {

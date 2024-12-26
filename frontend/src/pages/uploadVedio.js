@@ -79,7 +79,7 @@ const UploadVideo = () => {
 
     setLoading(true); // Start loader
     try {
-      await axios.post("http://localhost:8000/v1/user/upload", data, {
+      await axios.post("https://user-managment-3.onrender.com/v1/user/upload", data, {
         headers: {
           "x-authorization": `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

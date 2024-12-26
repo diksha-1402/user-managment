@@ -24,7 +24,7 @@ const Login = () => {
     setLoading(true); // Start loading
     try {
       const response = await axios.post(
-        "http://localhost:8000/v1/user/auth/login",
+        "https://user-managment-3.onrender.com/v1/user/auth/login",
         formData
       );
       if (response.data.success === 0) {
