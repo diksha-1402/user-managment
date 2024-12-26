@@ -133,7 +133,7 @@ const UpdateProfile = () => {
           name="about"
           value={formData.about}
           onChange={handleChange}
-          placeholder="About (Maximum 500 words)"
+          placeholder="About (Maximum 300 words)"
           className={`textarea-field ${error && formData.about.trim().split(/\s+/).length > 300 ? "error" : ""}`}
         />
         <button type="submit" className="submit-btn" disabled={loading}>
