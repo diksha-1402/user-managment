@@ -3,7 +3,7 @@ import constants from "../utils/constants.js";
 export default async function connect() {
     const CONNECTION_URL = constants.CONST_DB_URL;
     //mongoose.set('debug', true);
-    mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true}).
+    mongoose.connect(CONNECTION_URL, {}).
         then(
             () => {
                 console.log("database connected");
